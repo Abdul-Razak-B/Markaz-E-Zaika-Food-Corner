@@ -1,0 +1,2370 @@
+/* --- GLOBAL VARIABLES --- */
+:root {
+    --primary-color: #ff9f43;
+    --bg-dark: #121212;
+    --bg-card: #1e1e1e;
+    --bg-footer: #0a0a0a;
+    --text-light: #f5f5f5;
+    --text-gray: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    /*smooth scrolling for anchor links */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
+/* --- NAVIGATION --- */
+/* --- NAVIGATION BAR --- */
+nav {
+    /* Layout & Positioning */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Sticky & Floating Effect */
+    position: sticky;
+    top: 20px;
+    /* Stays 20px from the top when scrolling */
+    margin-top: 20px;
+    /* Initial spacing from top */
+    z-index: 1000;
+
+    /* Designing (Glassmorphism & Shape) */
+    padding: 15px 5%;
+    /* Adjusted padding for floating look */
+    background-color: rgba(18, 18, 18, 0.85);
+    /* Semi-transparent dark */
+    backdrop-filter: blur(12px);
+    /* Stronger blur for premium feel */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border */
+    border-radius: 50px;
+    /* Rounded pill shape */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Drop shadow for depth */
+
+    /* Smooth Animation */
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Very smooth transition */
+
+    /* Sizing */
+    width: 90%;
+    /* Not full width to emphasize floating margin */
+    margin-left: auto;
+    margin-right: auto;
+    /* Centers the navbar */
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1001;
+    /* Keeps logo above mobile menu */
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+/* Desktop Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-links button {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links button:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+/* Hamburger Icon (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    z-index: 1001;
+    /* Keeps icon above mobile menu */
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        /* Show on mobile */
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Hidden off-screen to the right */
+        width: 70%;
+        /* slide-out covers 70% of screen */
+        height: 100vh;
+        background-color: #1a1a1a;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: 0.4s ease;
+        /* Smooth slide effect */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* This class is added by JS to slide the menu in */
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links button {
+        width: 80%;
+        text-align: center;
+        padding: 12px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Cart Icon Styles */
+.cart-icon-container {
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: 0.3s;
+}
+
+.cart-icon-container:hover {
+    color: var(--primary-color);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* --- HERO SECTION --- */
+/* --- HERO SECTION --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 10%;
+
+    /* ADDED: Background Image with Dark Overlay */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+        url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1600');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Creates a cool parallax scrolling effect */
+    position: relative;
+}
+
+.hero-content {
+    flex-basis: 50%;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cta-btn {
+    padding: 15px 40px;
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 159, 67, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+}
+
+.hero-image {
+    flex-basis: 45%;
+    display: flex;
+    justify-content: center;
+}
+
+.pizza-img {
+    width: 100%;
+    max-width: 550px;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
+    animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- DELIVERY SECTION --- */
+.delivery-section {
+    background: #1a1a1a;
+    padding: 60px 8%;
+    border-bottom: 1px solid #333;
+    overflow: hidden;
+    /* For animation containment */
+}
+
+.delivery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* Responsive wrapping */
+}
+
+/* --- Left: Animated Icon --- */
+.delivery-icon-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 159, 67, 0.1);
+    /* Soft Orange BG */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(255, 159, 67, 0.2);
+    flex-shrink: 0;
+}
+
+.delivery-icon-wrapper i {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    transform: rotate(-5deg);
+    /* Slight tilt for speed */
+    z-index: 2;
+}
+
+/* Wind Animation Effect */
+.wind-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 159, 67, 0.5);
+    animation: spinWind 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spinWind {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+/* --- Right: Text Content --- */
+.delivery-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.delivery-content h2 {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.delivery-content h2 span {
+    color: var(--primary-color);
+    font-style: italic;
+    /* Adds speed feel to text */
+}
+
+.delivery-content p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Delivery Info Tags */
+.delivery-tags {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.delivery-tags span {
+    background: #252525;
+    color: #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #444;
+    transition: 0.3s;
+}
+
+.delivery-tags span i {
+    color: var(--primary-color);
+}
+
+.delivery-tags span:hover {
+    border-color: var(--primary-color);
+    background: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+/* Responsive Tweak */
+@media (max-width: 768px) {
+    .delivery-container {
+        text-align: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .delivery-tags {
+        justify-content: center;
+    }
+}
+
+/* --- DELIVERY SECTION --- */
+.delivery-section {
+    background: #1a1a1a;
+    padding: 60px 8%;
+    border-bottom: 1px solid #333;
+    overflow: hidden;
+    /* For animation containment */
+}
+
+.delivery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* Responsive wrapping */
+}
+
+/* --- Left: Animated Icon --- */
+.delivery-icon-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 159, 67, 0.1);
+    /* Soft Orange BG */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(255, 159, 67, 0.2);
+    flex-shrink: 0;
+}
+
+.delivery-icon-wrapper i {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    transform: rotate(-5deg);
+    /* Slight tilt for speed */
+    z-index: 2;
+}
+
+/* Wind Animation Effect */
+.wind-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 159, 67, 0.5);
+    animation: spinWind 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spinWind {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+/* --- Right: Text Content --- */
+.delivery-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.delivery-content h2 {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.delivery-content h2 span {
+    color: var(--primary-color);
+    font-style: italic;
+    /* Adds speed feel to text */
+}
+
+.delivery-content p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* Delivery Info Tags */
+.delivery-tags {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.delivery-tags span {
+    background: #252525;
+    color: #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #444;
+    transition: 0.3s;
+}
+
+.delivery-tags span i {
+    color: var(--primary-color);
+}
+
+.delivery-tags span:hover {
+    border-color: var(--primary-color);
+    background: #2a2a2a;
+    transform: translateY(-2px);
+}
+
+/* Responsive Tweak */
+@media (max-width: 768px) {
+    .delivery-container {
+        text-align: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .delivery-tags {
+        justify-content: center;
+    }
+}
+
+/* --- DELIVERY SECTION --- */
+.delivery-section {
+    /* ADDED: Background Image + Dark Overlay */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+        url('https://images.pexels.com/photos/4393668/pexels-photo-4393668.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax Effect */
+
+    padding: 60px 8%;
+    border-bottom: 1px solid #333;
+    overflow: hidden;
+    position: relative;
+}
+
+.delivery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* --- Left: Animated Icon --- */
+.delivery-icon-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: rgba(255, 159, 67, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(255, 159, 67, 0.2);
+    flex-shrink: 0;
+
+    /* Entrance Animation */
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Scooter "Riding" Animation */
+.delivery-icon-wrapper i {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    z-index: 2;
+    /* This makes the scooter vibrate/bounce slightly */
+    animation: rideBike 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes rideBike {
+    0% {
+        transform: rotate(-5deg) translateY(0);
+    }
+
+    100% {
+        transform: rotate(-5deg) translateY(-3px);
+    }
+}
+
+/* Wind Effect (Spinning behind) */
+.wind-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 159, 67, 0.5);
+    animation: spinWind 4s linear infinite;
+    z-index: 1;
+}
+
+@keyframes spinWind {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.5;
+    }
+}
+
+/* --- Right: Text Content Animations --- */
+.delivery-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Heading Animation */
+.delivery-content h2 {
+    font-size: 2.2rem;
+    color: white;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    opacity: 0;
+    /* Start hidden */
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+    /* Wait for icon */
+}
+
+.delivery-content h2 span {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* Paragraph Animation */
+.delivery-content p {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+    /* Wait a bit more */
+}
+
+/* Tags Animation */
+.delivery-tags {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-delay: 0.7s;
+    /* Wait even more */
+}
+
+.delivery-tags span {
+    background: #252525;
+    color: #ddd;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #444;
+    transition: 0.3s;
+}
+
+.delivery-tags span i {
+    color: var(--primary-color);
+}
+
+.delivery-tags span:hover {
+    border-color: var(--primary-color);
+    background: #2a2a2a;
+    transform: translateY(-3px);
+}
+
+/* --- Shared Keyframes --- */
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+        -webkit-transform: translateY(30px);
+        -moz-transform: translateY(30px);
+        -ms-transform: translateY(30px);
+        -o-transform: translateY(30px);
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Tweak */
+@media (max-width: 768px) {
+    .delivery-container {
+        text-align: center;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .delivery-tags {
+        justify-content: center;
+    }
+}
+
+/* --- ABOUT SECTION --- */
+.about-section {
+    padding: 80px 8%;
+
+    /* ADDED: Background Image with Semi-Transparent Dark Overlay */
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+        url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+
+    overflow: hidden;
+    position: relative;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Left: Image Styling */
+.about-image-wrapper {
+    flex: 1;
+    position: relative;
+    /* Initial state for animation */
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+
+.about-img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--primary-color);
+    /* Continuous floating animation */
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.img-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: var(--primary-color);
+    color: #121212;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Right: Text Styling */
+.about-content {
+    flex: 1;
+}
+
+.about-content h3 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+}
+
+/* Feature List */
+.about-features {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-weight: 600;
+}
+
+.feature i {
+    color: var(--primary-color);
+}
+
+/* --- ANIMATION CLASSES (Triggered by JS) --- */
+
+/* When the section becomes visible, we add the 'visible' class */
+.about-image-wrapper.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Delays */
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.delay-3 {
+    transition-delay: 0.6s;
+}
+
+.delay-4 {
+    transition-delay: 0.8s;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-title {
+        text-align: center !important;
+    }
+
+    .about-features {
+        justify-content: center;
+    }
+
+    .img-badge {
+        right: 10px;
+    }
+}
+
+/* --- MENU SECTION --- */
+.menu-section {
+    padding: 80px 8%;
+
+    /* ADDED: Background Image with Dark Gradient Overlay */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+        url('https://images.pexels.com/photos/616404/pexels-photo-616404.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--text-light);
+}
+
+.section-title span {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+/* --- Category Filter Styles --- */
+.category-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 2px solid #333;
+    color: var(--text-gray);
+    padding: 8px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+/* --- MENU GRID (Fixed Equal Widths) --- */
+.menu-grid {
+    display: grid;
+    /* CHANGED: 'auto-fill' prevents the last item from stretching to fill the row.
+       It keeps the columns 'phantom' even if empty, ensuring alignment. */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+
+    /* Center the whole grid if there are very few items */
+    justify-content: center;
+}
+
+/* Ensure cards take full height of the grid cell */
+.food-card {
+    background-color: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    /* Forces cards to match height in the same row */
+    width: 100%;
+    /* Ensures it fills the grid column exactly */
+}
+
+.food-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #333;
+}
+
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.add-btn {
+    background-color: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-light);
+    padding: 5px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.add-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+/* --- FOUNDER SECTION --- */
+.founder-section {
+    padding: 80px 8%;
+
+    /* ADDED: Tech/Workspace Background with Dark Overlay */
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)),
+        url('https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+
+    position: relative;
+    border-top: 1px solid #333;
+    overflow: hidden;
+}
+
+.founder-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* --- Left: Animated Image --- */
+.founder-image-wrapper {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rotating Glow Ring */
+.glow-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    animation: spinGlow 6s linear infinite;
+    box-shadow: 0 0 20px rgba(255, 159, 67, 0.3);
+}
+
+@keyframes spinGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* The Image Itself */
+.founder-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #252525;
+    position: relative;
+    z-index: 2;
+    /* Floating Animation */
+    animation: floatFounder 4s ease-in-out infinite;
+}
+
+@keyframes floatFounder {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* --- Right: Text Content --- */
+.founder-content {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.founder-content .subtitle {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.founder-name {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 800;
+    line-height: 1.1;
+
+    background: linear-gradient(to right, #fff, var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.founder-role {
+    font-size: 1.5rem;
+    color: #bbb;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+.founder-bio {
+    color: var(--text-gray);
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+    max-width: 500px;
+}
+
+/* --- Social Links --- */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    background: #252525;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+}
+
+/* Hover Colors */
+.social-icon:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(255, 159, 67, 0.3);
+}
+
+.social-icon.fb:hover {
+    background: #3b5998;
+    border-color: #3b5998;
+}
+
+.social-icon.insta:hover {
+    background: #E1306C;
+    border-color: #E1306C;
+}
+
+.social-icon.linkedin:hover {
+    background: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-icon.web:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .founder-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .founder-content {
+        display: flex;
+        flex-direct ion: column;
+        align-items: center;
+    }
+
+    .founder-bio {
+        text-align: center;
+    }
+}
+
+/* --- FOOTER --- */
+.footer {
+    /* Adjusted Gradient Opacity (0.5 to 0.8) to show the image clearly */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+        url('https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+
+    padding: 60px 8% 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 50px;
+    position: relative;
+
+    /* Added text shadow so white text pops against the background image */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.footer-info h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    color: var(--text-gray);
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    margin-top: 5px;
+    font-size: 1.2rem;
+}
+
+.footer-map {
+    flex: 1;
+    min-width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #333;
+}
+
+.footer-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.copyright {
+    text-align: center;
+    color: var(--text-gray);
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+/* --- CART POPUP STYLES --- */
+.cart-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Toggle class to show modal */
+.cart-modal-overlay.show {
+    display: flex;
+}
+
+.cart-modal-content {
+    background-color: #252525;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.cart-items-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+.cart-item-info {
+    font-size: 1rem;
+}
+
+.remove-item-btn {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.cart-footer {
+    border-top: 1px solid #444;
+    padding-top: 15px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.checkout-btn {
+    width: 100%;
+    background-color: #25D366;
+    /* WhatsApp Green */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #1da851;
+}
+
+/* Added Missing Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .hero-content {
+        margin-top: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+}
+
+/* --- Creative Scrollbar for Cart List --- */
+
+/* 1. The Scrollbar Width */
+.cart-items-list::-webkit-scrollbar {
+    width: 8px;
+    /* Slim and sleek */
+}
+
+/* 2. The Background Track (The path the scrollbar moves on) */
+.cart-items-list::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    /* Dark gray to match the modal background */
+    border-radius: 10px;
+    margin: 10px 0;
+    /* Adds little spacing at top and bottom */
+}
+
+/* 3. The Scrollbar Handle (The moving part) */
+.cart-items-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    /* Matches your website Orange */
+    border-radius: 10px;
+    /* Perfectly round edges */
+    border: 2px solid #252525;
+    /* Creates a "floating" effect inside the track */
+}
+
+/* 4. Hover Effect */
+.cart-items-list::-webkit-scrollbar-thumb:hover {
+    background: #e67e22;
+    /* Slightly darker orange when you grab it */
+    cursor: pointer;
+}
+
+/* --- QUANTITY CONTROLS (Cart) --- */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.qty-number {
+    font-weight: bold;
+    min-width: 20px;
+    text-align: center;
+    color: white;
+}
+
+.qty-btn {
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.qty-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.1);
+}
+
+/* Ensure cart item uses flex to separate text from buttons */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+/* --- UPDATED CART ACTIONS --- */
+.cart-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.clear-btn {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    /* Takes 1 part width */
+    transition: 0.2s;
+}
+
+.clear-btn:hover {
+    background-color: #e84118;
+}
+
+.checkout-btn {
+    flex: 2;
+    /* Takes 2 parts width (wider than clear button) */
+}
+
+/* --- CHECKOUT CHOICE MODAL --- */
+.choice-modal {
+    text-align: center;
+    max-width: 350px;
+    height: auto;
+    /* Shrink to fit content */
+}
+
+.choice-btn {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.choice-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.choice-btn.whatsapp {
+    background-color: #25D366;
+}
+
+.choice-btn.email {
+    background-color: #00a8ff;
+}
+
+.cancel-choice-btn {
+    background: transparent;
+    border: 1px solid #777;
+    color: #aaa;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.cancel-choice-btn:hover {
+    color: white;
+    border-color: white;
+}
+
+/* --- TOAST NOTIFICATION (Add to Cart Alert) --- */
+.toast-box {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    /* Start hidden below screen */
+    background-color: #252525;
+    border-left: 5px solid var(--primary-color);
+    /* Orange Accent */
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3000;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Bouncy effect */
+    min-width: 300px;
+}
+
+.toast-box.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    /* Slide up to position */
+}
+
+.toast-icon {
+    background-color: var(--primary-color);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #121212;
+    font-weight: bold;
+}
+
+.toast-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-title {
+    font-size: 0.85rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.toast-message {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+/* --- CUSTOM CONFIRMATION MODAL --- */
+.confirm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Dark dimmed background */
+    backdrop-filter: blur(5px);
+    /* Modern blur effect */
+    display: none;
+    /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 4000;
+    /* Above everything */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.confirm-modal-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.confirm-box {
+    background: #1e1e1e;
+    width: 90%;
+    max-width: 350px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    transform: scale(0.5);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy pop-in */
+}
+
+.confirm-modal-overlay.open .confirm-box {
+    transform: scale(1);
+}
+
+.confirm-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 71, 87, 0.1);
+    /* Light red bg */
+    color: #ff4757;
+    font-size: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 71, 87, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    }
+}
+
+.confirm-box h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.confirm-box p {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.confirm-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-cancel,
+.btn-confirm {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 2px solid #555;
+    color: #ccc;
+}
+
+.btn-cancel:hover {
+    border-color: white;
+    color: white;
+}
+
+.btn-confirm {
+    background: #ff4757;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.btn-confirm:hover {
+    background: #e84118;
+    transform: translateY(-2px);
+}
+
+/* --- EMPTY CART VISUAL (Inside Modal) --- */
+.empty-cart-visual {
+    text-align: center;
+    padding: 50px 20px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.empty-cart-visual i {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: #333;
+    animation: floatingIcon 3s ease-in-out infinite;
+}
+
+.empty-cart-visual p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+@keyframes floatingIcon {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* --- WARNING TOAST VARIANT --- */
+.toast-box.warning {
+    border-left-color: #ff4757;
+    /* Red accent */
+}
+
+.toast-box.warning .toast-icon {
+    background-color: #ff4757;
+    color: white;
+}
+
+/* Add a shake animation for errors */
+.toast-box.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    25% {
+        transform: translateX(-55%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-45%) translateY(0);
+    }
+
+    75% {
+        transform: translateX(-55%) translateY(0);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* --- PAGINATION STYLES --- */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.page-btn {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.page-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+.page-btn:disabled {
+    border-color: #555;
+    color: #555;
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+.page-indicator {
+    color: var(--text-gray);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* --- COMMENTS SECTION --- */
+.comments-section {
+    padding: 80px 8%;
+
+    /* ADDED: Background Image with Dark Overlay */
+    /* Opacity is set to 0.85 to make the text clear while showing the image */
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+        url('https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Parallax effect */
+
+    border-top: 1px solid #333;
+    position: relative;
+}
+
+.comments-container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Form Styling */
+.comment-form-wrapper {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    min-width: 300px;
+    height: fit-content;
+}
+
+.comment-form-wrapper h3,
+.comments-display-wrapper h3 {
+    color: white;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: var(--primary-color);
+    background: #333;
+}
+
+/* List Styling */
+.comments-display-wrapper {
+    flex: 1.5;
+    min-width: 300px;
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 300px;
+}
+
+/* Individual Comment Card */
+.comment-card {
+    background: #1e1e1e;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border-left: 3px solid #333;
+    animation: fadeIn 0.5s ease;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.c-name {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.c-date {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.comment-body {
+    color: #ddd;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Pagination Specifics */
+.pagination-controls.small {
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.page-btn.small {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+}
+
+/* Add these utility classes for better JS integration */
+.empty-msg {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #777;
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+/* Ensure inputs in admin table don't overflow */
+.input-field {
+    width: 100%;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* --- PREMIUM CHECKOUT MODAL DESIGN --- */
+
+/* 1. Modal Container & Scrollbar */
+.cart-modal-content.checkout-modal {
+    background: #1e1e1e;
+    width: 90%;
+    max-width: 450px;
+    padding: 30px;
+    /* More breathing room */
+    border-radius: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    border: 1px solid #333;
+
+    /* SCROLLBAR LOGIC */
+    max-height: 90vh;
+    /* Prevents it from going off-screen */
+    overflow-y: auto;
+    /* Adds scrollbar if content is too long */
+    display: block;
+    /* Ensures scrolling works properly */
+}
+
+/* Custom Scrollbar Styling */
+.checkout-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.checkout-modal::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+}
+
+.checkout-modal::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.checkout-modal::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* 2. Header Design */
+.checkout-modal h3 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* 3. Form Inputs & Spacing */
+.input-group {
+    margin-bottom: 20px;
+    /* Space between inputs */
+}
+
+.input-group label {
+    display: block;
+    color: #bbb;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.checkout-input {
+    width: 100%;
+    background: #121212;
+    border: 1px solid #444;
+    color: white;
+    padding: 14px 18px;
+    /* Larger click area */
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.checkout-input:focus {
+    border-color: var(--primary-color);
+    background: #000;
+    box-shadow: 0 0 0 3px rgba(255, 159, 67, 0.2);
+    /* Glow effect */
+}
+
+/* 4. Suggestion Box */
+.suggestion-box {
+    background: rgba(255, 159, 67, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.suggestion-icon {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.suggestion-text {
+    font-size: 0.95rem;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+/* 5. Buttons Area */
+.checkout-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Space between buttons */
+    margin-top: 30px;
+}
+
+.choice-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* WhatsApp Button */
+.choice-btn.whatsapp {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.2);
+}
+
+.choice-btn.whatsapp:hover {
+    background: #1ebc57;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* Email Button */
+.choice-btn.email {
+    background: #2d3436;
+    color: white;
+    border: 1px solid #444;
+}
+
+.choice-btn.email:hover {
+    background: #333;
+    border-color: #666;
+    transform: translateY(-2px);
+}
+
+/* Cancel Button */
+.cancel-choice-btn {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #777;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.cancel-choice-btn:hover {
+    color: #aaa;
+    text-decoration: underline;
+}
+
+/* --- STYLISH SCROLLBAR DESIGN (Cart & Checkout) --- */
+
+/* 1. Target both the Cart List and Checkout Form */
+.cart-items-list,
+.cart-modal-content.checkout-modal {
+    scroll-behavior: smooth;
+    /* Smooth scrolling behavior */
+    scrollbar-width: thin;
+    /* For Firefox: Thin scrollbar */
+    scrollbar-color: var(--primary-color) #121212;
+    /* For Firefox: Thumb & Track colors */
+    overflow-y: auto;
+    /* Ensure vertical scrolling is enabled */
+    padding-right: 5px;
+    /* Spacing text from scrollbar */
+}
+
+/* 2. Webkit Scrollbar (Chrome, Edge, Safari) */
+.cart-items-list::-webkit-scrollbar,
+.cart-modal-content.checkout-modal::-webkit-scrollbar {
+    width: 8px;
+    /* Slim width */
+}
+
+/* 3. The Track (Background) */
+.cart-items-list::-webkit-scrollbar-track,
+.cart-modal-content.checkout-modal::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    /* Slightly lighter than card bg */
+    border-radius: 10px;
+    /* Rounded ends */
+    margin: 10px 0;
+    /* Spacing from top/bottom edges */
+}
+
+/* 4. The Thumb (Handle) */
+.cart-items-list::-webkit-scrollbar-thumb,
+.cart-modal-content.checkout-modal::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--primary-color), #d35400);
+    /* Stylish Gradient */
+    border-radius: 10px;
+    /* Fully rounded */
+    border: 2px solid #1e1e1e;
+    /* Creates a "floating" effect */
+}
+
+/* 5. Hover Effect */
+.cart-items-list::-webkit-scrollbar-thumb:hover,
+.cart-modal-content.checkout-modal::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #d35400, var(--primary-color));
+    /* Reverse gradient on hover */
+    cursor: pointer;
+}
+
+
+/* --- BACK TO TOP BUTTON --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    /* Orange */
+    color: #121212;
+    /* Dark Text */
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    /* Neumorphism / Creative Shadow */
+    box-shadow: 0 4px 15px rgba(255, 159, 67, 0.4);
+
+    /* Initial State (Hidden) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active State (Shown via JS) */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover Effect */
+.back-to-top:hover {
+    background: #e67e22;
+    /* Slightly Darker Orange */
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 159, 67, 0.6);
+}
+
+/* Click Effect */
+.back-to-top:active {
+    transform: scale(0.95);
+}

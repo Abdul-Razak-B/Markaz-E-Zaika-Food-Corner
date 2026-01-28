@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markaz E Zaiqa | Authentic Taste</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Logo" />
+        <i class="fas fa-utensils" style="font-size: 1.2rem; margin-right: 8px"></i>
+        Markaz E Zaiqa
+      </div>
+
+      <div class="hamburger" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'}); closeMobileMenu()">Home</button>
+        <!-- <button onclick="scrollToSection('delivery'); closeMobileMenu()">Delivery</button> -->
+        <button onclick="scrollToSection('about'); closeMobileMenu()">About</button>
+        <button onclick="scrollToSection('menu'); closeMobileMenu()">Menu</button>
+        <button onclick="scrollToSection('reviews'); closeMobileMenu()">Reviews</button>
+        <button onclick="scrollToSection('founder'); closeMobileMenu()">Founder</button>
+        <button onclick="scrollToSection('contact'); closeMobileMenu()">Contact</button>
+
+        <div class="cart-icon-container" onclick="toggleCart(); closeMobileMenu()">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cartCount" class="cart-count">0</span>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          The Ultimate <br />
+          <span>Taste Experience</span>
+        </h1>
+        <p>
+          Welcome to <strong>Markaz E Zaiqa</strong>. From sizzling Karhai to
+          chilled Kulfa, we serve authentic flavors with love. Your hunger ends
+          here.
+        </p>
+        <button class="cta-btn" onclick="scrollToSection('menu')">
+          Order Now
+        </button>
+      </div>
+      <div class="hero-image">
+        <img src="Hero.png" alt="Delicious Pizza" class="pizza-img" />
+      </div>
+    </section>
+
+    <section class="delivery-section" id="delivery">
+      <div class="delivery-container">
+
+        <div class="delivery-icon-wrapper">
+          <i class="fas fa-motorcycle"></i>
+          <div class="wind-effect"></div>
+        </div>
+
+        <div class="delivery-content">
+          <h2>Fast <span>Home Delivery</span></h2>
+          <p>
+            Craving your favorites? We deliver hot and fresh food right to your doorstep in <strong>Daharki</strong>.
+            Speedy service, hygienic packaging, and authentic taste guaranteed!
+          </p>
+          <div class="delivery-tags">
+            <span><i class="fas fa-clock"></i> 30-45 Mins</span>
+            <span><i class="fas fa-map-marker-alt"></i> Daharki City</span>
+            <span><i class="fas fa-truck"></i> Free Shipping*</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-container">
+        <div class="about-image-wrapper">
+          <img src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt="About Markaz E Zaiqa" class="about-img">
+          <div class="img-badge">
+            <i class="fas fa-certificate"></i>
+            <span>Est. 2026</span>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">
+            About <span>Markaz E Zaiqa</span>
+          </h2>
+          <h3 class="animate-text delay-1">Tradition Meets Taste</h3>
+          <p class="animate-text delay-2">
+            Founded by <strong>Abdul Razak</strong>, Markaz E Zaiqa is more than just a restaurant; it is a culinary
+            landmark in the heart of <strong>Daharki</strong>.
+          </p>
+          <p class="animate-text delay-3">
+            We believe that great food starts with the freshest ingredients. From our signature <em>crispy Zinger
+              Burgers</em> to our aromatic, slow-cooked <em>Biryani</em>, every dish is prepared with passion and a
+            secret
+            blend of spices passed down through generations.
+          </p>
+
+          <div class="about-features animate-text delay-4">
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Fresh Ingredients
+            </div>
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Authentic Recipes
+            </div>
+            <div class="feature">
+              <i class="fas fa-check-circle"></i> Best Hygiene
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <h2 class="section-title">Our <span>Menu</span></h2>
+
+      <div class="category-filter">
+        <button class="filter-btn active" onclick="filterMenu('All')">
+          All
+        </button>
+        <button class="filter-btn" onclick="filterMenu('Fast Food')">
+          Fast Food
+        </button>
+        <button class="filter-btn" onclick="filterMenu('Desi Cuisine')">
+          Desi Cuisine
+        </button>
+        <button class="filter-btn" onclick="filterMenu('BBQ')">BBQ</button>
+        <button class="filter-btn" onclick="filterMenu('Dessert')">
+          Dessert
+        </button>
+        <button class="filter-btn" onclick="filterMenu('Drinks')">
+          Drinks
+        </button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+
+      <div class="pagination-controls" id="paginationControls">
+        <button class="page-btn" id="prevBtn" onclick="changePage(-1)">
+          <i class="fas fa-chevron-left"></i> Previous
+        </button>
+
+        <span id="pageIndicator" class="page-indicator">Page 1</span>
+
+        <button class="page-btn" id="nextBtn" onclick="changePage(1)">
+          Next <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+    <section class="comments-section" id="reviews">
+      <h2 class="section-title">Customer <span>Reviews</span></h2>
+
+      <div class="comments-container">
+        <div class="comment-form-wrapper">
+          <h3>Leave a Comment</h3>
+          <form id="commentForm" onsubmit="handleCommentSubmit(event)">
+            <div class="input-group">
+              <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="input-group">
+              <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="input-group">
+              <textarea name="msg" placeholder="Your Message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Submit Comment</button>
+          </form>
+        </div>
+
+        <div class="comments-display-wrapper">
+          <h3>Latest Feedback</h3>
+
+          <div id="commentsList" class="comments-list">
+          </div>
+
+          <div class="pagination-controls small" id="commentPagination">
+            <button class="page-btn small" id="prevCommBtn" onclick="changeCommentPage(-1)">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <span id="commPageIndicator" class="page-indicator">1 / 1</span>
+
+            <button class="page-btn small" id="nextCommBtn" onclick="changeCommentPage(1)">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-section" id="founder">
+      <div class="founder-container">
+
+        <div class="founder-image-wrapper">
+          <div class="glow-circle"></div>
+          <img src="Profile.jpeg" alt="Abdul Razak" class="founder-img">
+        </div>
+
+        <div class="founder-content">
+          <h4 class="subtitle">The Mind Behind Markaz E Zaiqa</h4>
+          <h2 class="founder-name">Abdul Razak</h2>
+          <h3 class="founder-role">Founder & Lead Developer</h3>
+
+          <p class="founder-bio">
+            A passionate <strong>MPhil Scholar (CS)</strong> and educator dedicated to blending technology with
+            tradition.
+            I built <em>Markaz E Zaiqa</em> to bring the authentic taste of Daharki to the digital world, ensuring a
+            seamless
+            and modern ordering experience for our community.
+          </p>
+
+          <div class="social-links">
+            <a href="#" class="social-icon fb"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon insta"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon web"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-info">
+          <h2>Contact Us</h2>
+          <div class="contact-item">
+            <i class="fas fa-user"></i>
+            <div><span class="label">Owner:&nbsp;</span>Abdul Razak</div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div><span class="label">Email:&nbsp;</span>abdulrazakb63@gmail.com</div>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <div><span class="label">WhatsApp:&nbsp;</span>+92 309 0609391</div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <span class="label">Address:&nbsp;</span>Abdul Razzaque Khan Bhutto's House
+            </div>
+          </div>
+        </div>
+        <div class="footer-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d631.5370601960859!2d69.70317337855218!3d28.054423419642962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39371d3288f6b48f%3A0x1ab272f29bd843cb!2sAbdul%20Razzaque%20Khan%20Bhutto!5e1!3m2!1sen!2s!4v1769015475483!5m2!1sen!2s"
+            allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Markaz E Zaiqa | Owner: Abdul Razak</div>
+    </footer>
+
+    <div id="cartModal" class="cart-modal-overlay">
+      <div class="cart-modal-content">
+        <div class="cart-header">
+          <h3>Your Cart</h3>
+          <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items-list" id="cartItemsList">
+          <p style="text-align: center; color: #777">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+          <div class="total-row">
+            <span>Total:</span><span id="cartTotal">Rs 0</span>
+          </div>
+          <div class="cart-actions">
+            <button class="clear-btn" onclick="clearCart()">Clear All</button>
+            <button class="checkout-btn" onclick="openCheckoutChoice()">
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="checkoutModal" class="cart-modal-overlay">
+      <div class="cart-modal-content checkout-modal">
+        <h3>Checkout Details</h3>
+
+        <div id="suggestionBox" class="suggestion-box" style="display:none;">
+          <div class="suggestion-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="suggestion-text">
+            <strong>Welcome back!</strong>
+            <span id="suggestionMsg"></span>
+          </div>
+        </div>
+
+        <form id="checkoutForm" onsubmit="event.preventDefault();">
+          <div class="input-group">
+            <label style="color:#aaa; font-size:0.8rem; margin-bottom:5px; display:block;">Full Name</label>
+            <input type="text" id="custName" placeholder="Enter your name" class="checkout-input" required>
+          </div>
+
+          <div class="input-group">
+            <label style="color:#aaa; font-size:0.8rem; margin-bottom:5px; display:block;">WhatsApp Number</label>
+            <input type="tel" id="custPhone" placeholder="03xx xxxxxxx" class="checkout-input" required>
+          </div>
+
+          <div class="input-group">
+            <label style="color:#aaa; font-size:0.8rem; margin-bottom:5px; display:block;">Delivery Address</label>
+            <textarea id="custAddress" rows="2" placeholder="Street, House #, Landmark" class="checkout-input"
+              required></textarea>
+          </div>
+
+          <div class="checkout-actions">
+            <button type="button" class="choice-btn whatsapp" onclick="processOrder('whatsapp')">
+              <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </button>
+
+            <!-- <button type="button" class="choice-btn email" onclick="processOrder('email')">
+              <i class="fas fa-envelope"></i> Order via Email
+            </button> -->
+
+          </div>
+        </form>
+
+        <button class="cancel-choice-btn" onclick="closeCheckoutModal()">Cancel</button>
+      </div>
+    </div>
+
+    <div id="toastBox" class="toast-box">
+      <div class="toast-icon"><i class="fas fa-check"></i></div>
+      <div class="toast-text">
+        <span class="toast-title">Success!</span>
+        <span id="toastItemName" class="toast-message">Item added to cart</span>
+      </div>
+    </div>
+
+    <div id="customConfirmModal" class="confirm-modal-overlay">
+      <div class="confirm-box">
+        <div class="confirm-icon">
+          <i class="fas fa-trash-alt"></i>
+        </div>
+        <h3 id="confirmTitle">Remove Item?</h3>
+        <p id="confirmMessage">Are you sure you want to remove this item?</p>
+
+        <div class="confirm-actions">
+          <button class="btn-cancel" onclick="closeConfirm()">Cancel</button>
+          <button class="btn-confirm" id="confirmYesBtn">Yes, Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="warningToast" class="toast-box warning">
+      <div class="toast-icon"><i class="fas fa-exclamation"></i></div>
+      <div class="toast-text">
+        <span class="toast-title">Oops!</span>
+        <span id="warningMsg" class="toast-message">Your cart is empty.</span>
+      </div>
+    </div>
+
+    <button id="backToTop" class="back-to-top" title="Go to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
